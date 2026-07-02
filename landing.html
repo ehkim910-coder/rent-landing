@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>장기렌트 중도해지 전환 상담 | 위약금 부담 줄이고 신차로</title>
+<meta name="description" content="장기렌트 해지 위약금 때문에 차량 변경을 망설이고 계신가요? 그냥 해지하기 전, 기존 계약 정리와 신차 전환을 함께 설계해 손해를 줄이는 방법을 무료로 확인하세요. 상담 후 계약을 강요하지 않습니다." />
+<meta property="og:title" content="장기렌트 해지 위약금, 그냥 내고 끝내지 마세요" />
+<meta property="og:description" content="현재 장기렌트 이용 중이라면, 먼저 내 차량 전환 가능 여부부터 무료로 확인하세요." />
+<meta property="og:type" content="website" />
+
+<!-- 본문 폰트: Pretendard (CDN) -->
+<link rel="preconnect" href="https://cdn.jsdelivr.net" />
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+<style>
+/* ============================================================
+   장기렌트 중도해지 전환 랜딩 — 디자인 토큰
+   톤: Deep Navy 베이스 + 형광 그린 포인트(해결감) + 오렌지(문제 강조, 제한적)
+   원칙: 모바일 우선 · 카드형 · CTA 통일 · 부드러운 입체감/모션
+============================================================ */
+:root{
+  /* 배경/표면 */
+  --bg:#FFFFFF;
+  --bg-alt:#F3F7FA;          /* 섹션 교차 배경 */
+  --surface:#FFFFFF;
+
+  /* 다크(네이비) */
+  --navy:#0B2138;
+  --navy-deep:#071726;
+  --navy-soft:#13314F;
+  --navy-line:rgba(255,255,255,.12);
+
+  /* 텍스트 */
+  --text:#0F1F2E;
+  --text-sub:#566676;
+  --text-mute:#8A99A8;
+  --text-on-dark:#EAF1F8;
+  --text-on-dark-sub:#A9BBCC;
+
+  /* 포인트(그린=해결/전환 가능) */
+  --accent:#00C281;
+  --accent-strong:#00A86F;
+  --accent-soft:#E6F8F1;
+  --accent-ink:#04402C;
+
+  /* 보조 블루(신뢰/링크) */
+  --blue:#1E6BFF;
+  --blue-soft:#EAF1FF;
+
+  /* 경고(문제 강조 — 제한적 사용) */
+  --warn:#FF6A45;
+  --warn-soft:#FFEDE7;
+  --warn-ink:#7A2C18;
+
+  /* 보더/구분선 */
+  --border:#E4EAF0;
+  --border-soft:#EEF2F6;
+
+  /* radius */
+  --r-btn:14px;
+  --r-card:18px;
+  --r-img:20px;
+  --r-input:10px;
+  --r-tag:8px;
+
+  /* 그림자 */
+  --shadow:0 2px 6px rgba(11,33,56,.05), 0 18px 36px -22px rgba(11,33,56,.22);
+  --shadow-lg:0 10px 28px -10px rgba(11,33,56,.18), 0 32px 60px -30px rgba(11,33,56,.26);
+  --cta-glow:0 10px 26px -8px rgba(0,194,129,.55);
+
+  --maxw:1180px;
+  --header-h:62px;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+html,body{overflow-x:clip;}
+body{
+  margin:0;
+  font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Segoe UI',Roboto,sans-serif;
+  color:var(--text);
+  background:var(--bg);
+  -webkit-font-smoothing:antialiased;
+  letter-spacing:-0.01em;
+  line-height:1.7;
+  font-size:16px;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;cursor:pointer;}
+.min0{min-width:0;}
+.m-only{display:inline;}
+@media(min-width:900px){ .m-only{display:none;} }
+
+/* 컨테이너 */
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 20px;}
+@media(min-width:900px){ .wrap{padding:0 40px;} }
+
+/* 섹션 공통 */
+.section{padding:60px 0;}
+@media(min-width:900px){ .section{padding:110px 0;} }
+.section--alt{background:var(--bg-alt);}
+.section--dark{background:var(--navy);color:var(--text-on-dark);}
+[id]{scroll-margin-top:78px;}
+
+/* 섹션 헤드 */
+.eyebrow{
+  display:inline-block;font-size:12px;font-weight:800;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--accent-strong);margin:0 0 14px;
+}
+.section--dark .eyebrow{color:var(--accent);}
+.sec-title{
+  font-size:24px;line-height:1.34;font-weight:800;letter-spacing:-0.03em;
+  margin:0 0 16px;color:var(--text);
+}
+.section--dark .sec-title{color:#fff;}
+.sec-sub{
+  font-size:15.5px;line-height:1.75;color:var(--text-sub);margin:0;max-width:62ch;
+}
+.section--dark .sec-sub{color:var(--text-on-dark-sub);}
+.sec-head{margin-bottom:40px;}
+.sec-head--center{text-align:center;}
+.sec-head--center .sec-sub{margin-left:auto;margin-right:auto;}
+@media(min-width:900px){
+  .sec-title{font-size:34px;}
+  .sec-head{margin-bottom:56px;}
+}
+em.hl{font-style:normal;color:var(--accent-strong);font-weight:800;}
+em.hl-warn{font-style:normal;color:var(--warn);font-weight:800;}
+.section--dark em.hl{color:var(--accent);}
+
+/* ============================================================
+   버튼 / CTA
+============================================================ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  font-weight:700;font-size:16px;line-height:1.3;
+  padding:0 28px;height:54px;border:none;border-radius:var(--r-btn);
+  transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+  white-space:nowrap;text-align:center;
+}
+.btn--cta{
+  background:var(--accent);color:#04261A;box-shadow:var(--cta-glow);
+}
+.btn--cta:hover{transform:translateY(-2px);background:var(--accent-strong);box-shadow:0 14px 30px -8px rgba(0,194,129,.6);}
+.btn--lg{height:60px;font-size:17px;padding:0 34px;}
+.btn--block{display:flex;width:100%;}
+.btn--ghost{
+  background:transparent;color:#fff;border:1px solid rgba(255,255,255,.5);
+}
+.btn--ghost:hover{background:rgba(255,255,255,.08);}
+.btn-note{display:block;text-align:center;font-size:13px;color:var(--text-mute);margin-top:12px;}
+.section--dark .btn-note{color:var(--text-on-dark-sub);}
+
+/* ============================================================
+   헤더 (sticky)
+============================================================ */
+.header{
+  position:sticky;top:0;z-index:60;height:var(--header-h);
+  background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(10px);
+  border-bottom:1px solid var(--border-soft);
+}
+.header .wrap{height:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:17px;letter-spacing:-0.02em;color:var(--navy);}
+.logo .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft);}
+.header .btn{height:42px;font-size:14px;padding:0 18px;}
+@media(max-width:560px){ .header-cta-text-long{display:none;} }
+
+/* ============================================================
+   HERO
+============================================================ */
+.hero{
+  position:relative;color:var(--text-on-dark);
+  background:
+    radial-gradient(120% 90% at 85% 0%, rgba(0,194,129,.16), transparent 55%),
+    radial-gradient(100% 80% at 0% 100%, rgba(30,107,255,.16), transparent 55%),
+    linear-gradient(160deg,var(--navy) 0%, var(--navy-deep) 100%);
+  overflow:hidden;
+}
+.hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size:22px 22px;opacity:.5;
+}
+.hero .wrap{position:relative;z-index:2;padding-top:46px;padding-bottom:54px;}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:34px;align-items:center;}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;
+  color:var(--accent);background:rgba(0,194,129,.12);border:1px solid rgba(0,194,129,.32);
+  padding:7px 14px;border-radius:999px;margin-bottom:20px;
+}
+.hero h1{
+  font-size:30px;line-height:1.28;font-weight:800;letter-spacing:-0.035em;margin:0 0 18px;color:#fff;
+}
+.hero-sub{font-size:16px;line-height:1.7;color:var(--text-on-dark);margin:0 0 14px;opacity:.96;}
+.hero-help{font-size:14.5px;line-height:1.7;color:var(--text-on-dark-sub);margin:0 0 26px;}
+.hero-cta-row{display:flex;flex-direction:column;gap:10px;margin-bottom:26px;}
+.hero-check{list-style:none;padding:0;margin:0 0 22px;display:grid;grid-template-columns:1fr;gap:10px;}
+.hero-check li{
+  display:flex;align-items:center;gap:10px;font-size:14.5px;font-weight:600;color:var(--text-on-dark);
+  background:rgba(255,255,255,.06);border:1px solid var(--navy-line);border-radius:12px;padding:11px 14px;
+}
+.hero-check .ck{
+  flex:0 0 auto;width:20px;height:20px;border-radius:50%;background:var(--accent);
+  display:grid;place-items:center;color:#04261A;font-size:12px;font-weight:900;
+}
+.hero-trust{
+  font-size:13px;line-height:1.65;color:var(--text-on-dark-sub);
+  border-left:3px solid var(--accent);padding-left:14px;
+}
+
+/* Hero 우측: 차량 이미지 + 진단 카드 스택 */
+.hero-visual{display:flex;flex-direction:column;}
+.hero-visual .img-ph{aspect-ratio:16/10;}
+.hero-visual .diag-card{margin-top:14px;}
+
+/* Hero 진단 미리보기 카드 */
+.diag-card{
+  background:rgba(255,255,255,.05);border:1px solid var(--navy-line);
+  border-radius:var(--r-card);padding:22px;backdrop-filter:blur(6px);
+  box-shadow:0 30px 60px -30px rgba(0,0,0,.6);
+}
+.diag-card h3{font-size:14px;font-weight:700;color:var(--text-on-dark-sub);margin:0 0 4px;letter-spacing:0;}
+.diag-card .diag-lead{font-size:13px;color:var(--text-mute);margin:0 0 18px;}
+.diag-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 0;border-bottom:1px dashed var(--navy-line);}
+.diag-row:last-of-type{border-bottom:none;}
+.diag-row .k{font-size:14px;color:var(--text-on-dark-sub);}
+.diag-row .v{font-size:15px;font-weight:700;color:#fff;}
+.diag-result{
+  margin-top:18px;background:rgba(0,194,129,.14);border:1px solid rgba(0,194,129,.4);
+  border-radius:14px;padding:16px;text-align:center;
+}
+.diag-result .r-label{font-size:12.5px;color:var(--accent);font-weight:700;margin:0 0 4px;}
+.diag-result .r-main{font-size:18px;font-weight:800;color:#fff;margin:0;}
+.diag-result .r-note{font-size:12px;color:var(--text-on-dark-sub);margin:6px 0 0;}
+
+@media(min-width:900px){
+  .hero h1{font-size:46px;}
+  .hero-sub{font-size:18px;}
+  .hero-grid{grid-template-columns:1.05fr .95fr;gap:54px;}
+  .hero-cta-row{flex-direction:row;align-items:center;}
+  .hero-check{grid-template-columns:1fr 1fr;}
+  .hero .wrap{padding-top:72px;padding-bottom:86px;}
+  .diag-card{padding:28px;}
+}
+
+/* ============================================================
+   카드 그리드 (공통)
+============================================================ */
+.card-grid{display:grid;grid-template-columns:1fr;gap:14px;}
+@media(min-width:680px){ .card-grid--2{grid-template-columns:1fr 1fr;} }
+@media(min-width:900px){
+  .card-grid--2{grid-template-columns:1fr 1fr;gap:18px;}
+  .card-grid--3{grid-template-columns:repeat(3,1fr);gap:18px;}
+}
+.card{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--r-card);
+  padding:22px;box-shadow:var(--shadow);transition:transform .28s ease, box-shadow .28s ease;
+}
+
+/* ============================================================
+   이미지 자리 placeholder 박스
+   · 실제 이미지로 교체 시: <div class="img-ph">...</div> 를
+     <img src="..." alt="..." class="img-real"> 로 바꾸면 됩니다.
+============================================================ */
+.img-ph{
+  position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:8px;text-align:center;border:1.5px dashed #C2CEDA;background:#F4F7FA;
+  border-radius:var(--r-img);color:#7E8DA0;padding:22px;aspect-ratio:4/3;overflow:hidden;
+}
+.img-ph .ic{font-size:32px;line-height:1;}
+.img-ph .lbl{font-size:13.5px;font-weight:800;color:#5A6B7B;letter-spacing:-0.01em;}
+.img-ph .hint{font-size:11.5px;line-height:1.55;color:#9CA3AF;max-width:30ch;}
+.img-ph--dark{border-color:rgba(255,255,255,.28);background:rgba(255,255,255,.05);color:#A9BBCC;}
+.img-ph--dark .lbl{color:#EAF1F8;}
+.img-ph--dark .hint{color:#92A4B6;}
+.img-ph--wide{aspect-ratio:16/7;}
+.img-real{display:block;width:100%;border-radius:var(--r-img);box-shadow:var(--shadow);object-fit:cover;}
+
+/* 텍스트 + 이미지 2분할 */
+.split{display:grid;grid-template-columns:1fr;gap:24px;align-items:center;}
+@media(min-width:900px){
+  .split{grid-template-columns:1fr 1fr;gap:48px;}
+  .split--rev .split-media{order:-1;}
+}
+
+/* ============================================================
+   02. Problem — 체크리스트 카드
+============================================================ */
+.problem-card{display:flex;align-items:flex-start;gap:13px;}
+.problem-card .ic{
+  flex:0 0 auto;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;
+  background:var(--warn-soft);color:var(--warn);font-size:19px;
+}
+.problem-card p{margin:0;font-size:15.5px;font-weight:600;line-height:1.6;color:var(--text);}
+
+/* ============================================================
+   03. Insight — 강조 박스
+============================================================ */
+.prose{max-width:64ch;}
+.prose p{font-size:16px;line-height:1.85;color:var(--text-sub);margin:0 0 18px;}
+.section--dark .prose p{color:var(--text-on-dark-sub);}
+.emph-box{
+  margin-top:30px;background:linear-gradient(135deg,var(--navy) 0%, var(--navy-soft) 100%);
+  color:#fff;border-radius:var(--r-card);padding:28px 26px;box-shadow:var(--shadow-lg);
+  position:relative;overflow:hidden;
+}
+.emph-box::before{content:"“";position:absolute;top:-10px;left:18px;font-size:90px;color:rgba(0,194,129,.28);font-weight:800;}
+.emph-box p{position:relative;font-size:18px;line-height:1.6;font-weight:700;margin:0;letter-spacing:-0.02em;}
+.emph-box p em{font-style:normal;color:var(--accent);}
+@media(min-width:900px){ .emph-box{padding:38px 40px;} .emph-box p{font-size:22px;} }
+
+/* ============================================================
+   04. Solution — 3단계 + 흐름도
+============================================================ */
+.step-card{position:relative;padding-top:26px;}
+.step-num{
+  position:absolute;top:-18px;left:22px;width:44px;height:44px;border-radius:13px;
+  background:var(--accent);color:#04261A;display:grid;place-items:center;font-weight:900;font-size:18px;
+  box-shadow:var(--cta-glow);
+}
+.step-card .st-kicker{font-size:12.5px;font-weight:800;color:var(--accent-strong);letter-spacing:.04em;margin:6px 0 6px;}
+.step-card h3{font-size:18px;font-weight:800;margin:0 0 10px;letter-spacing:-0.02em;}
+.step-card p{font-size:14.5px;line-height:1.7;color:var(--text-sub);margin:0;}
+
+.flow{margin-top:40px;display:flex;flex-direction:column;align-items:center;gap:0;}
+.flow-node{
+  width:100%;max-width:520px;text-align:center;background:var(--surface);
+  border:1px solid var(--border);border-radius:14px;padding:15px 18px;font-weight:700;font-size:15px;
+  box-shadow:var(--shadow);
+}
+.flow-node--final{background:var(--accent-soft);border-color:rgba(0,194,129,.4);color:var(--accent-ink);}
+.flow-arrow{height:26px;width:2px;background:var(--border);position:relative;}
+.flow-arrow::after{content:"";position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  border-left:6px solid transparent;border-right:6px solid transparent;border-top:7px solid var(--accent);}
+
+/* ============================================================
+   05. Comparison — 비교표
+============================================================ */
+.compare{margin-top:8px;}
+.compare-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:var(--r-card);overflow:hidden;box-shadow:var(--shadow);background:#fff;}
+.compare-table th,.compare-table td{padding:16px 18px;text-align:left;font-size:15px;border-bottom:1px solid var(--border-soft);vertical-align:top;}
+.compare-table thead th{background:var(--navy);color:#fff;font-weight:700;font-size:14.5px;}
+.compare-table thead th.col-good{background:var(--accent-strong);}
+.compare-table tbody th{font-weight:700;color:var(--text);background:var(--bg-alt);width:24%;}
+.compare-table td.col-bad{color:var(--text-sub);}
+.compare-table td.col-good{background:var(--accent-soft);color:var(--accent-ink);font-weight:700;}
+.compare-table tr:last-child th,.compare-table tr:last-child td{border-bottom:none;}
+
+/* 모바일 카드형 비교 */
+.compare-cards{display:none;flex-direction:column;gap:14px;}
+.cmp-card{border:1px solid var(--border);border-radius:var(--r-card);overflow:hidden;box-shadow:var(--shadow);background:#fff;}
+.cmp-card .cmp-q{background:var(--bg-alt);padding:13px 16px;font-weight:800;font-size:15px;}
+.cmp-card .cmp-body{display:grid;grid-template-columns:1fr 1fr;}
+.cmp-col{padding:14px 16px;font-size:13.5px;line-height:1.55;}
+.cmp-col .cmp-label{display:block;font-size:11.5px;font-weight:800;letter-spacing:.02em;margin-bottom:6px;text-transform:uppercase;}
+.cmp-col--bad{border-right:1px solid var(--border-soft);color:var(--text-sub);}
+.cmp-col--bad .cmp-label{color:var(--text-mute);}
+.cmp-col--good{background:var(--accent-soft);color:var(--accent-ink);font-weight:700;}
+.cmp-col--good .cmp-label{color:var(--accent-strong);}
+
+.compare-cta{margin-top:30px;text-align:center;}
+@media(max-width:760px){
+  .compare-table{display:none;}
+  .compare-cards{display:flex;}
+}
+
+/* ============================================================
+   06. Case — 사례 카드
+============================================================ */
+.case-card{display:flex;flex-direction:column;gap:10px;cursor:default;}
+.case-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+.case-tag{
+  display:inline-flex;align-items:center;gap:6px;align-self:flex-start;
+  font-size:12px;font-weight:700;color:var(--blue);background:var(--blue-soft);
+  padding:5px 11px;border-radius:var(--r-tag);
+}
+.case-card h3{font-size:16.5px;font-weight:800;margin:2px 0 0;letter-spacing:-0.02em;}
+.case-card p{font-size:14.5px;line-height:1.7;color:var(--text-sub);margin:0;}
+
+/* ============================================================
+   07. Service Detail — 확인 항목 + 신뢰박스
+============================================================ */
+.check-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr;gap:10px;}
+@media(min-width:680px){ .check-list{grid-template-columns:1fr 1fr;} }
+.check-list li{
+  display:flex;align-items:center;gap:11px;background:var(--surface);border:1px solid var(--border);
+  border-radius:12px;padding:14px 16px;font-size:15px;font-weight:600;box-shadow:0 1px 2px rgba(11,33,56,.04);
+}
+.check-list .ck{
+  flex:0 0 auto;width:22px;height:22px;border-radius:7px;background:var(--accent-soft);color:var(--accent-strong);
+  display:grid;place-items:center;font-size:13px;font-weight:900;
+}
+.trust-box{
+  margin-top:26px;background:var(--navy);color:#fff;border-radius:var(--r-card);padding:26px;
+  box-shadow:var(--shadow-lg);display:flex;gap:16px;align-items:flex-start;
+}
+.trust-box .t-ic{flex:0 0 auto;width:44px;height:44px;border-radius:12px;background:rgba(0,194,129,.16);color:var(--accent);display:grid;place-items:center;font-size:22px;}
+.trust-box p{margin:0;font-size:15.5px;line-height:1.7;color:var(--text-on-dark);}
+.trust-box strong{color:var(--accent);font-weight:800;}
+
+/* ============================================================
+   08. Process — 5단계
+============================================================ */
+.process{counter-reset:step;display:grid;grid-template-columns:1fr;gap:0;max-width:680px;margin:0 auto;}
+.proc-step{display:flex;gap:16px;align-items:flex-start;padding:0 0 26px;position:relative;}
+.proc-step:not(:last-child)::before{content:"";position:absolute;left:21px;top:46px;bottom:0;width:2px;background:var(--border);}
+.proc-step .pn{
+  flex:0 0 auto;width:44px;height:44px;border-radius:13px;background:var(--navy);color:#fff;
+  display:grid;place-items:center;font-weight:900;font-size:18px;z-index:1;
+}
+.proc-step .pbody{padding-top:6px;}
+.proc-step .pbody h3{font-size:16.5px;font-weight:800;margin:0 0 3px;letter-spacing:-0.02em;}
+.proc-step .pbody p{font-size:14px;color:var(--text-sub);margin:0;}
+.proc-step--final .pn{background:var(--accent);color:#04261A;box-shadow:var(--cta-glow);}
+.proc-step--final .pbody p{color:var(--accent-strong);font-weight:700;}
+.process-cta{margin-top:14px;text-align:center;}
+
+/* ============================================================
+   09. FAQ — 아코디언
+============================================================ */
+.faq-list{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:12px;}
+.faq-item{border:1px solid var(--border);border-radius:14px;background:#fff;overflow:hidden;box-shadow:0 1px 2px rgba(11,33,56,.04);transition:box-shadow .2s ease;}
+.faq-item[open]{box-shadow:var(--shadow);}
+.faq-q{
+  list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:18px 20px;font-size:15.5px;font-weight:700;color:var(--text);
+}
+.faq-q::-webkit-details-marker{display:none;}
+.faq-q .qmark{flex:0 0 auto;color:var(--accent-strong);font-weight:900;margin-right:2px;}
+.faq-q .arrow{flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:var(--bg-alt);display:grid;place-items:center;transition:transform .25s ease;color:var(--text-sub);font-size:13px;}
+.faq-item[open] .faq-q .arrow{transform:rotate(180deg);background:var(--accent-soft);color:var(--accent-strong);}
+.faq-a{padding:0 20px 20px;font-size:14.5px;line-height:1.8;color:var(--text-sub);}
+.faq-a p{margin:0;}
+
+/* ============================================================
+   10. Final CTA / Form
+============================================================ */
+.form-section{background:var(--bg-alt);}
+.form-shell{max-width:640px;margin:0 auto;}
+.form-card{
+  background:#fff;border:1px solid var(--border);border-radius:var(--r-card);
+  padding:26px 22px;box-shadow:var(--shadow-lg);margin-top:30px;
+}
+.form-field{margin-bottom:16px;}
+.form-field label{display:block;font-size:14px;font-weight:700;margin-bottom:7px;color:var(--text);}
+.form-field .opt{color:var(--text-mute);font-weight:600;font-size:12.5px;margin-left:4px;}
+.req-star{color:var(--warn);margin-left:2px;}
+.form-field input,.form-field select{
+  width:100%;height:52px;border:1px solid var(--border);border-radius:var(--r-input);
+  padding:0 15px;font-size:16px;font-family:inherit;color:var(--text);background:#fff;transition:border .15s ease, box-shadow .15s ease;
+}
+.form-field input:focus,.form-field select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft);}
+.form-field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23566676' d='M6 8 0 0h12z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:38px;}
+.form-row{display:grid;grid-template-columns:1fr;gap:0;}
+@media(min-width:560px){ .form-row{grid-template-columns:1fr 1fr;gap:14px;} }
+.form-divider{border:none;border-top:1px solid var(--border-soft);margin:22px 0 20px;}
+.form-divider-label{font-size:12.5px;font-weight:800;letter-spacing:.04em;color:var(--text-mute);text-transform:uppercase;margin:0 0 14px;}
+
+.privacy{display:flex;flex-direction:column;gap:8px;margin:8px 0 20px;background:var(--bg-alt);border-radius:12px;padding:14px 16px;}
+.privacy-label{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--text-sub);cursor:pointer;line-height:1.5;}
+.privacy-label input{flex:0 0 auto;width:20px;height:20px;margin-top:1px;accent-color:var(--accent-strong);}
+.privacy-req{color:var(--warn);font-weight:700;}
+.privacy-more{background:none;border:none;color:var(--blue);font-size:12.5px;font-weight:700;padding:0;margin-left:30px;text-align:left;text-decoration:underline;}
+.privacy-detail{margin-left:30px;font-size:12.5px;line-height:1.7;color:var(--text-mute);}
+.privacy-detail p{margin:2px 0;}
+
+.form-foot-note{font-size:12.5px;line-height:1.65;color:var(--text-mute);text-align:center;margin:14px 0 0;}
+
+/* 성공 메시지 */
+.form-success{display:none;text-align:center;padding:30px 10px;}
+.form-success.show{display:block;}
+.form-success .s-ic{width:64px;height:64px;border-radius:50%;background:var(--accent-soft);color:var(--accent-strong);display:grid;place-items:center;font-size:32px;margin:0 auto 18px;}
+.form-success h3{font-size:20px;font-weight:800;margin:0 0 12px;}
+.form-success p{font-size:15px;line-height:1.75;color:var(--text-sub);margin:0;}
+.form-error{display:none;background:var(--warn-soft);color:var(--warn-ink);border-radius:10px;padding:12px 14px;font-size:13.5px;margin-bottom:14px;}
+.form-error.show{display:block;}
+
+@media(min-width:900px){ .form-card{padding:38px 36px;} }
+
+/* ============================================================
+   푸터
+============================================================ */
+.footer{background:var(--navy-deep);color:var(--text-on-dark-sub);padding:40px 0 calc(40px + env(safe-area-inset-bottom));font-size:13px;line-height:1.8;}
+.footer .logo{color:#fff;margin-bottom:14px;}
+.footer-links{display:flex;flex-wrap:wrap;gap:8px 18px;margin:0 0 16px;}
+.footer-links a{color:var(--text-on-dark);font-weight:600;}
+.footer-links a:hover{color:var(--accent);}
+.footer .biz{font-size:12px;color:var(--text-mute);}
+.footer .biz strong{color:var(--text-on-dark-sub);font-weight:600;}
+.footer .disclaimer{margin-top:16px;font-size:11.5px;color:#5e7186;border-top:1px solid var(--navy-line);padding-top:16px;}
+
+/* ============================================================
+   하단 고정 CTA (모바일)
+============================================================ */
+.sticky-cta{
+  position:fixed;left:0;right:0;bottom:0;z-index:70;
+  padding:10px 16px calc(10px + env(safe-area-inset-bottom));
+  background:rgba(255,255,255,.94);backdrop-filter:blur(10px);
+  border-top:1px solid var(--border);
+  transform:translateY(120%);transition:transform .3s cubic-bezier(.16,1,.3,1);
+  box-shadow:0 -8px 24px -12px rgba(11,33,56,.25);
+}
+.sticky-cta.show{transform:translateY(0);}
+.sticky-cta .btn{width:100%;}
+@media(min-width:900px){ .sticky-cta{display:none;} }
+
+/* ============================================================
+   reveal 모션
+============================================================ */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
+.reveal.in{opacity:1;transform:none;}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  .reveal{opacity:1;transform:none;transition:none;}
+  .btn,.card,.faq-item{transition:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     HEADER
+============================================================ -->
+<header class="header">
+  <div class="wrap">
+    <!-- TODO(브랜드): 로고 텍스트/이미지 교체 -->
+    <a href="#top" class="logo"><span class="dot"></span>장기렌트 전환케어</a>
+    <a href="#lead-form" class="btn btn--cta" data-scroll>
+      <span class="header-cta-text-long">무료 전환 가능성&nbsp;</span>확인하기
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============================================================
+     SECTION 01 · HERO
+============================================================ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <!-- 좌: 카피 -->
+      <div class="min0">
+        <span class="hero-badge">● 현재 장기렌트 이용자 전용</span>
+        <h1>장기렌트 해지 위약금,<br>그냥 <em class="hl">내고 끝내지 마세요.</em></h1>
+        <p class="hero-sub">
+          지금 타는 차량을 정리하고<br class="m-only">
+          위약금 부담을 줄이면서<br>
+          신차로 갈아타는 방법을 확인해드립니다.
+        </p>
+        <p class="hero-help">
+          현재 장기렌트를 이용 중이라면,<br>
+          먼저 내 차량 전환 가능 여부부터 <strong style="color:var(--accent)">무료로 확인</strong>하세요.
+        </p>
+
+        <div class="hero-cta-row">
+          <a href="#lead-form" class="btn btn--cta btn--lg" data-scroll>내 차량 전환 가능 여부 확인하기</a>
+        </div>
+
+        <ul class="hero-check">
+          <li><span class="ck">✓</span> 현재 장기렌트 이용 중</li>
+          <li><span class="ck">✓</span> 계약기간이 남아 있음</li>
+          <li><span class="ck">✓</span> 위약금 때문에 해지를 망설이는 중</li>
+          <li><span class="ck">✓</span> 신차로 바꾸고 싶음</li>
+        </ul>
+
+        <p class="hero-trust">
+          상담 후 계약을 강요하지 않습니다.<br>
+          현재 계약 조건을 기준으로 손해를 줄이는 방법부터 안내드립니다.
+        </p>
+      </div>
+
+      <!-- 우: 차량 이미지 + 전환 가능성 진단 미리보기 카드 -->
+      <div class="min0">
+        <div class="hero-visual reveal">
+        <!-- 이미지 교체: 아래 .img-ph 를 <img src="images/hero-car.jpg" alt="신차 SUV" class="img-real"> 로 -->
+        <div class="img-ph img-ph--dark" role="img" aria-label="히어로 차량 이미지 자리">
+          <span class="ic">🚗</span>
+          <span class="lbl">차량 이미지</span>
+          <span class="hint">국산 SUV·세단 정면/측면 컷 (밝고 신뢰감 있는 톤) · 권장 1200×900</span>
+        </div>
+        <div class="diag-card">
+          <h3>전환 가능성 진단 (예시)</h3>
+          <p class="diag-lead">현재 계약 정보를 입력하면 이렇게 확인해드립니다.</p>
+          <div class="diag-row"><span class="k">현재 차량</span><span class="v">국산 SUV · 잔여 18개월</span></div>
+          <div class="diag-row"><span class="k">월 납입료</span><span class="v">79만 원대</span></div>
+          <div class="diag-row"><span class="k">렌트사 안내 위약금</span><span class="v">상담 시 확인</span></div>
+          <div class="diag-row"><span class="k">처리 방식 검토</span><span class="v">승계 · 완납승계 · 차량처리</span></div>
+          <div class="diag-result">
+            <p class="r-label">검토 결과 예시</p>
+            <p class="r-main">위약금 부담을 줄이는 전환 경로 검토 가능</p>
+            <p class="r-note">※ 결과는 계약 조건·차량 상태에 따라 달라집니다.</p>
+          </div>
+        </div>
+        </div><!-- /.hero-visual -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 02 · PROBLEM
+============================================================ -->
+<section class="section" id="problem">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Problem</span>
+      <h2 class="sec-title">이런 상황이라면<br>그냥 해지하기 전에 먼저 확인해보세요.</h2>
+      <p class="sec-sub">
+        장기렌트는 처음 계약할 때는 편하지만, 중간에 상황이 바뀌면 쉽게 정리하기 어렵습니다.
+        차는 바꾸고 싶은데 계약기간은 남아 있고, 해지하려니 위약금이 부담되는 상황이라면
+        먼저 전환 가능 여부를 확인하는 것이 좋습니다.
+      </p>
+    </div>
+
+    <div class="card-grid card-grid--2 reveal">
+      <div class="card problem-card"><span class="ic">⚠</span><p>지금 타는 차량이 마음에 들지 않아요</p></div>
+      <div class="card problem-card"><span class="ic">⚠</span><p>월 납입료가 부담돼요</p></div>
+      <div class="card problem-card"><span class="ic">⚠</span><p>신차로 바꾸고 싶은데 계약기간이 남아 있어요</p></div>
+      <div class="card problem-card"><span class="ic">⚠</span><p>렌트사에 문의했더니 위약금이 너무 크게 나왔어요</p></div>
+      <div class="card problem-card"><span class="ic">⚠</span><p>차량 승계가 가능한지 모르겠어요</p></div>
+      <div class="card problem-card"><span class="ic">⚠</span><p>기존 차량 처리와 신차 계약을 한 번에 해결하고 싶어요</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 03 · INSIGHT
+============================================================ -->
+<section class="section section--alt" id="insight">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Insight</span>
+      <h2 class="sec-title">문제는 위약금이 아니라,<br>기존 계약을 <em class="hl">어떻게 처리하느냐</em>입니다.</h2>
+    </div>
+    <div class="split split--rev reveal">
+      <div class="min0 prose">
+        <p>장기렌트를 중도해지할 때 많은 분들이 렌트사에서 안내받은 위약금만 보고 포기합니다.</p>
+        <p>하지만 모든 경우가 “그냥 위약금을 내고 해지”해야 하는 것은 아닙니다.</p>
+        <p>현재 차량 조건, 잔여 기간, 월 납입료, 차량 상태에 따라 승계가 가능한 경우도 있고,
+           기존 차량 처리와 신차 전환을 함께 설계해야 손해를 줄일 수 있는 경우도 있습니다.</p>
+      </div>
+      <div class="min0 split-media">
+        <!-- 이미지 교체: <img src="images/insight.jpg" alt="계약서를 보며 고민" class="img-real"> -->
+        <div class="img-ph" role="img" aria-label="상황 이미지 자리">
+          <span class="ic">🔑</span>
+          <span class="lbl">상황 이미지</span>
+          <span class="hint">차량 키·계약서를 두고 고민하는 장면 등 · 권장 1000×750</span>
+        </div>
+      </div>
+    </div>
+    <div class="emph-box reveal">
+      <p>장기렌트 중도해지는 “해지할까 말까”의 문제가 아니라<br>
+      <em>“어떤 방식으로 정리할 것인가”의 문제</em>입니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 04 · SOLUTION
+============================================================ -->
+<section class="section" id="solution">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Solution</span>
+      <h2 class="sec-title">기존 계약 정리부터<br>신차 전환까지 <em class="hl">한 번에 확인</em>합니다.</h2>
+      <p class="sec-sub">
+        신차 견적만 비교하면 기존 계약에서 발생하는 손해가 남을 수 있습니다.
+        중요한 것은 지금 타는 차량을 어떻게 정리하고, 어떤 조건으로 신차를 전환하느냐입니다.
+      </p>
+    </div>
+
+    <div class="card-grid card-grid--3 reveal">
+      <div class="card step-card">
+        <span class="step-num">1</span>
+        <p class="st-kicker">STEP 1</p>
+        <h3>현재 계약 조건 확인</h3>
+        <p>렌트사, 차량명, 월 납입료, 잔여 기간, 예상 위약금, 보증금/선납금 여부, 주행거리, 사고·수리 여부를 확인합니다.</p>
+      </div>
+      <div class="card step-card">
+        <span class="step-num">2</span>
+        <p class="st-kicker">STEP 2</p>
+        <h3>기존 차량 처리 가능성 검토</h3>
+        <p>완납승계, 계약승계, 차량 인수·처리, 위약금 상쇄 가능성 등을 검토합니다.</p>
+      </div>
+      <div class="card step-card">
+        <span class="step-num">3</span>
+        <p class="st-kicker">STEP 3</p>
+        <h3>신차 전환 조건 제안</h3>
+        <p>기존 차량 정리 방법과 함께 신규 차량 견적, 월 납입료, 초기비용 여부를 비교해 고객에게 유리한 선택지를 안내합니다.</p>
+      </div>
+    </div>
+
+    <!-- 흐름도 -->
+    <div class="flow reveal">
+      <div class="flow-node">현재 장기렌트 조건 확인</div>
+      <div class="flow-arrow"></div>
+      <div class="flow-node">위약금 · 잔여기간 · 차량상태 분석</div>
+      <div class="flow-arrow"></div>
+      <div class="flow-node">승계 · 완납승계 · 차량처리 가능성 검토</div>
+      <div class="flow-arrow"></div>
+      <div class="flow-node">신차 견적 비교</div>
+      <div class="flow-arrow"></div>
+      <div class="flow-node flow-node--final">손해를 줄이는 전환 방법 제안</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 05 · COMPARISON
+============================================================ -->
+<section class="section section--alt" id="comparison">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Comparison</span>
+      <h2 class="sec-title">그냥 해지하면 <em class="hl-warn">손해가 남을 수 있습니다.</em></h2>
+      <p class="sec-sub">
+        장기렌트를 중도해지할 때 가장 위험한 선택은 위약금만 보고 바로 해지하는 것입니다.
+        먼저 기존 차량을 어떻게 처리할 수 있는지, 신차 전환과 함께 계산했을 때 어떤 방법이 유리한지 확인해야 합니다.
+      </p>
+    </div>
+
+    <div class="compare reveal">
+      <!-- 데스크톱: 표 -->
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>구분</th>
+            <th>그냥 해지</th>
+            <th class="col-good">전환 상담</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th>위약금</th><td class="col-bad">고객이 직접 부담</td><td class="col-good">줄이거나 상쇄 가능성 검토</td></tr>
+          <tr><th>기존 차량 처리</th><td class="col-bad">고객이 직접 알아봐야 함</td><td class="col-good">승계·처리 가능성 확인</td></tr>
+          <tr><th>신차 계약</th><td class="col-bad">별도로 알아봐야 함</td><td class="col-good">기존 계약 정리와 함께 진행</td></tr>
+          <tr><th>손해 계산</th><td class="col-bad">정확히 알기 어려움</td><td class="col-good">현재 조건 기준으로 비교</td></tr>
+          <tr><th>시간</th><td class="col-bad">렌트사·중고차·신차 상담 각각 진행</td><td class="col-good">한 번에 확인 가능</td></tr>
+          <tr><th>결과</th><td class="col-bad">해지 손실 발생 가능</td><td class="col-good">손해를 줄이는 방향 제안</td></tr>
+        </tbody>
+      </table>
+
+      <!-- 모바일: 카드형 -->
+      <div class="compare-cards">
+        <div class="cmp-card"><div class="cmp-q">위약금</div><div class="cmp-body">
+          <div class="cmp-col cmp-col--bad"><span class="cmp-label">그냥 해지</span>고객이 직접 부담</div>
+          <div class="cmp-col cmp-col--good"><span class="cmp-label">전환 상담</span>줄이거나 상쇄 가능성 검토</div></div></div>
+        <div class="cmp-card"><div class="cmp-q">기존 차량 처리</div><div class="cmp-body">
+          <div class="cmp-col cmp-col--bad"><span class="cmp-label">그냥 해지</span>고객이 직접 알아봐야 함</div>
+          <div class="cmp-col cmp-col--good"><span class="cmp-label">전환 상담</span>승계·처리 가능성 확인</div></div></div>
+        <div class="cmp-card"><div class="cmp-q">신차 계약</div><div class="cmp-body">
+          <div class="cmp-col cmp-col--bad"><span class="cmp-label">그냥 해지</span>별도로 알아봐야 함</div>
+          <div class="cmp-col cmp-col--good"><span class="cmp-label">전환 상담</span>기존 계약 정리와 함께 진행</div></div></div>
+        <div class="cmp-card"><div class="cmp-q">손해 계산</div><div class="cmp-body">
+          <div class="cmp-col cmp-col--bad"><span class="cmp-label">그냥 해지</span>정확히 알기 어려움</div>
+          <div class="cmp-col cmp-col--good"><span class="cmp-label">전환 상담</span>현재 조건 기준으로 비교</div></div></div>
+        <div class="cmp-card"><div class="cmp-q">시간</div><div class="cmp-body">
+          <div class="cmp-col cmp-col--bad"><span class="cmp-label">그냥 해지</span>렌트사·중고차·신차 상담 각각 진행</div>
+          <div class="cmp-col cmp-col--good"><span class="cmp-label">전환 상담</span>한 번에 확인 가능</div></div></div>
+        <div class="cmp-card"><div class="cmp-q">결과</div><div class="cmp-body">
+          <div class="cmp-col cmp-col--bad"><span class="cmp-label">그냥 해지</span>해지 손실 발생 가능</div>
+          <div class="cmp-col cmp-col--good"><span class="cmp-label">전환 상담</span>손해를 줄이는 방향 제안</div></div></div>
+      </div>
+
+      <div class="compare-cta">
+        <a href="#lead-form" class="btn btn--cta btn--lg" data-scroll>그냥 해지 전, 내 조건부터 확인하기</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 06 · CASE
+============================================================ -->
+<section class="section" id="case">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Case</span>
+      <h2 class="sec-title">이런 분들이 많이 상담합니다.</h2>
+      <p class="sec-sub">아래는 실제 후기가 아니라, 전환 상담을 문의하시는 대표적인 상황입니다. 비슷한 상황이라면 먼저 확인해보세요.</p>
+    </div>
+
+    <div class="card-grid card-grid--3 reveal">
+      <div class="card case-card"><span class="case-tag">사례 1</span><h3>월 납입료가 부담되는 경우</h3><p>처음 계약할 때는 괜찮았지만, 매달 납입료가 부담되어 차량을 바꾸고 싶은 경우</p></div>
+      <div class="card case-card"><span class="case-tag">사례 2</span><h3>차량이 마음에 들지 않는 경우</h3><p>차급, 옵션, 디자인, 연비가 마음에 들지 않아 다른 차량으로 바꾸고 싶은 경우</p></div>
+      <div class="card case-card"><span class="case-tag">사례 3</span><h3>가족 상황이 바뀐 경우</h3><p>결혼, 출산, 자녀 성장 등으로 더 큰 차량이나 다른 차종이 필요한 경우</p></div>
+      <div class="card case-card"><span class="case-tag">사례 4</span><h3>사업자·법인 차량을 바꾸려는 경우</h3><p>사업 상황 변화로 기존 차량 운용이 맞지 않아 새로운 조건의 차량이 필요한 경우</p></div>
+      <div class="card case-card"><span class="case-tag">사례 5</span><h3>사고 이후 차량을 바꾸고 싶은 경우</h3><p>사고나 수리 이력 이후 차량을 계속 타기 부담스러운 경우</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 07 · SERVICE DETAIL
+============================================================ -->
+<section class="section section--alt" id="service">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Service</span>
+      <h2 class="sec-title">신청 후 이런 내용을 확인해드립니다.</h2>
+    </div>
+
+    <div class="reveal" style="margin-bottom:26px;">
+      <!-- 이미지 교체: <img src="images/consult.jpg" alt="상담 장면" class="img-real"> -->
+      <div class="img-ph img-ph--wide" role="img" aria-label="상담 장면 이미지 자리">
+        <span class="ic">💬</span>
+        <span class="lbl">상담 장면 이미지</span>
+        <span class="hint">상담사가 계약 조건을 설명하는 장면 / 스마트폰으로 안내받는 장면 · 권장 1200×525</span>
+      </div>
+    </div>
+
+    <ul class="check-list reveal">
+      <li><span class="ck">✓</span> 현재 차량 계약 상태</li>
+      <li><span class="ck">✓</span> 예상 중도해지 위약금</li>
+      <li><span class="ck">✓</span> 잔여 계약기간</li>
+      <li><span class="ck">✓</span> 월 납입료 부담 수준</li>
+      <li><span class="ck">✓</span> 승계 가능성</li>
+      <li><span class="ck">✓</span> 완납승계 가능성</li>
+      <li><span class="ck">✓</span> 기존 차량 처리 방법</li>
+      <li><span class="ck">✓</span> 신차 전환 시 월 납입료</li>
+      <li><span class="ck">✓</span> 고객에게 유리한 선택지</li>
+    </ul>
+
+    <div class="trust-box reveal">
+      <span class="t-ic">🤝</span>
+      <p><strong>무조건 신차 계약을 권하지 않습니다.</strong><br>
+      현재 조건에서 손해가 크다면, 지금 차량을 유지하는 것이 나은 경우도 솔직하게 안내드립니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 08 · PROCESS
+============================================================ -->
+<section class="section" id="process">
+  <div class="wrap">
+    <div class="sec-head sec-head--center reveal">
+      <span class="eyebrow">Process</span>
+      <h2 class="sec-title">복잡한 절차 없이,<br><em class="hl">1분 신청</em> 후 가능 여부를 확인하세요.</h2>
+    </div>
+
+    <div class="process reveal">
+      <div class="proc-step"><span class="pn">1</span><div class="pbody"><h3>현재 차량 정보 입력</h3><p>이름·연락처와 현재 이용 중인 차량 정보를 남겨주세요. (약 1분)</p></div></div>
+      <div class="proc-step"><span class="pn">2</span><div class="pbody"><h3>담당자가 계약 조건 확인</h3><p>남겨주신 정보를 바탕으로 현재 계약 조건을 확인합니다.</p></div></div>
+      <div class="proc-step"><span class="pn">3</span><div class="pbody"><h3>위약금·승계·차량처리 가능성 검토</h3><p>현재 조건 기준으로 손해를 줄일 수 있는 방법을 검토합니다.</p></div></div>
+      <div class="proc-step"><span class="pn">4</span><div class="pbody"><h3>신차 전환 조건 안내</h3><p>기존 차량 정리 방법과 함께 신차 전환 조건을 비교해 안내드립니다.</p></div></div>
+      <div class="proc-step proc-step--final"><span class="pn">5</span><div class="pbody"><h3>원할 경우 계약 진행</h3><p>안내 내용을 확인하고, 원하실 때만 진행합니다. 계약을 강요하지 않습니다.</p></div></div>
+    </div>
+
+    <div class="process-cta reveal">
+      <a href="#lead-form" class="btn btn--cta btn--lg" data-scroll>내 차량도 가능한지 확인하기</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 09 · FAQ
+============================================================ -->
+<section class="section section--alt" id="faq">
+  <div class="wrap">
+    <div class="sec-head sec-head--center reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2 class="sec-title">자주 묻는 질문</h2>
+    </div>
+
+    <div class="faq-list reveal">
+      <details class="faq-item">
+        <summary class="faq-q"><span><span class="qmark">Q.</span> 무조건 위약금이 없어지나요?</span><span class="arrow">▾</span></summary>
+        <div class="faq-a"><p>아닙니다. 계약 조건, 차량 상태, 잔여 기간, 렌트사 조건에 따라 다릅니다. 다만 그냥 해지하는 것보다 손해를 줄일 수 있는 방법이 있는지 확인해드립니다.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span><span class="qmark">Q.</span> 아직 계약기간이 많이 남았는데 가능한가요?</span><span class="arrow">▾</span></summary>
+        <div class="faq-a"><p>가능 여부는 계약 조건에 따라 달라집니다. 잔여 기간이 길어도 차량 상태나 승계 수요에 따라 방법이 있을 수 있습니다.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span><span class="qmark">Q.</span> 상담받으면 꼭 계약해야 하나요?</span><span class="arrow">▾</span></summary>
+        <div class="faq-a"><p>아닙니다. 먼저 현재 조건에서 전환이 가능한지 확인하는 무료 진단입니다. 상담 후 계약을 강요하지 않습니다.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span><span class="qmark">Q.</span> 렌트사에 위약금을 물어봤는데 너무 비쌉니다.</span><span class="arrow">▾</span></summary>
+        <div class="faq-a"><p>렌트사 기준 위약금만 보고 판단하지 마세요. 차량 처리 방식과 신차 전환 조건까지 함께 봐야 실제 손해를 판단할 수 있습니다.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span><span class="qmark">Q.</span> 법인 차량도 가능한가요?</span><span class="arrow">▾</span></summary>
+        <div class="faq-a"><p>가능합니다. 법인 차량, 개인사업자 차량, 개인 장기렌트 모두 조건에 따라 상담 가능합니다.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 10 · FINAL CTA / FORM
+============================================================ -->
+<section class="section form-section" id="lead-form">
+  <div class="wrap">
+    <div class="form-shell">
+      <div class="sec-head sec-head--center reveal">
+        <span class="eyebrow">Free Check</span>
+        <h2 class="sec-title">내 차량도 위약금 부담 없이<br>신차 전환이 가능한지 확인해보세요.</h2>
+        <p class="sec-sub">현재 차량 정보를 남겨주시면 기존 계약 정리 가능성과 신차 전환 조건을 함께 확인해드립니다.</p>
+      </div>
+
+      <div class="form-card reveal">
+        <!-- ===== 입력 폼 ===== -->
+        <form id="leadForm" novalidate>
+          <div class="form-error" id="formError">필수 항목을 모두 입력하고 개인정보 수집에 동의해 주세요.</div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="f-name">이름<span class="req-star">*</span></label>
+              <input type="text" id="f-name" name="name" autocomplete="name" placeholder="홍길동" required />
+            </div>
+            <div class="form-field">
+              <label for="f-phone">연락처<span class="req-star">*</span></label>
+              <input type="tel" id="f-phone" name="phone" inputmode="numeric" autocomplete="tel" placeholder="010-0000-0000" required />
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="f-car">현재 이용 중인 차량명<span class="req-star">*</span></label>
+            <input type="text" id="f-car" name="car" placeholder="예: 쏘렌토 2.5 가솔린" required />
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="f-fee">월 납입료<span class="req-star">*</span></label>
+              <input type="text" id="f-fee" name="monthly_fee" inputmode="numeric" placeholder="예: 79만 원" required />
+            </div>
+            <div class="form-field">
+              <label for="f-remain">남은 계약기간<span class="req-star">*</span></label>
+              <input type="text" id="f-remain" name="remaining" placeholder="예: 18개월" required />
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="f-want">신차 전환 희망 여부<span class="req-star">*</span></label>
+            <select id="f-want" name="switch_intent" required>
+              <option value="" disabled selected>선택해주세요</option>
+              <option value="희망">신차로 전환하고 싶어요</option>
+              <option value="검토중">전환 가능 여부부터 확인하고 싶어요</option>
+              <option value="미정">아직 잘 모르겠어요</option>
+            </select>
+          </div>
+
+          <hr class="form-divider" />
+          <p class="form-divider-label">선택 입력 (있으면 더 정확하게 안내드려요)</p>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="f-penalty">예상 위약금<span class="opt">선택</span></label>
+              <input type="text" id="f-penalty" name="expected_penalty" inputmode="numeric" placeholder="예: 300만 원" />
+            </div>
+            <div class="form-field">
+              <label for="f-company">렌트사명<span class="opt">선택</span></label>
+              <input type="text" id="f-company" name="rent_company" placeholder="예: ○○캐피탈" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="f-hope">희망 차량<span class="opt">선택</span></label>
+              <input type="text" id="f-hope" name="hope_car" placeholder="예: 카니발 / 미정" />
+            </div>
+            <div class="form-field">
+              <label for="f-time">상담 가능 시간<span class="opt">선택</span></label>
+              <select id="f-time" name="contact_time">
+                <option value="" disabled selected>선택해주세요</option>
+                <option value="언제든">언제든 가능</option>
+                <option value="오전">오전 (09~12시)</option>
+                <option value="오후">오후 (12~18시)</option>
+                <option value="저녁">저녁 (18시 이후)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- 개인정보 동의 -->
+          <div class="privacy">
+            <label class="privacy-label">
+              <input type="checkbox" id="f-privacy" name="privacy" required />
+              <span>개인정보 수집·이용에 동의합니다 <span class="privacy-req">(필수)</span></span>
+            </label>
+            <button type="button" class="privacy-more" id="privacyMore" aria-expanded="false">수집 항목 자세히 보기</button>
+            <div class="privacy-detail" id="privacyDetail" hidden>
+              <p><strong>수집 목적</strong> · 장기렌트 전환 상담 및 안내</p>
+              <p><strong>수집 항목</strong> · 이름, 연락처, 차량·계약 정보(차량명·월 납입료·잔여기간 등), 선택 입력 항목</p>
+              <p><strong>보유 기간</strong> · 상담 완료 후 1년 (또는 신청자 요청 시 즉시 삭제)</p>
+              <p>동의를 거부하실 수 있으며, 거부 시 상담 진행이 어려울 수 있습니다.</p>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn--cta btn--lg btn--block" id="submitBtn">무료 전환 가능성 확인하기</button>
+          <p class="form-foot-note">
+            남겨주신 정보는 상담 목적 외에는 사용되지 않습니다.<br>
+            상담 후 계약을 강요하지 않습니다.
+          </p>
+        </form>
+
+        <!-- ===== 제출 완료 메시지 ===== -->
+        <div class="form-success" id="formSuccess">
+          <div class="s-ic">✓</div>
+          <h3>신청이 완료되었습니다.</h3>
+          <p>남겨주신 차량 정보를 기준으로<br>장기렌트 전환 가능 여부를 확인한 뒤 연락드리겠습니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="logo"><span class="dot"></span>장기렌트 전환케어</div>
+    <div class="footer-links">
+      <!-- TODO: 개인정보처리방침 페이지 링크 연결 -->
+      <a href="#" id="privacyPolicyLink">개인정보처리방침</a>
+      <!-- TODO: 실제 대표번호로 교체 -->
+      <a href="tel:0000000000">상담 전화: 000-0000-0000</a>
+    </div>
+    <p class="biz">
+      <!-- TODO(사업자 정보): 아래 값을 실제 정보로 교체하세요 -->
+      <strong>상호</strong> (주)○○○○ &nbsp;|&nbsp; <strong>대표</strong> 홍길동 &nbsp;|&nbsp;
+      <strong>사업자등록번호</strong> 000-00-00000<br>
+      <strong>주소</strong> 서울특별시 ○○구 ○○로 00, 0층 &nbsp;|&nbsp; <strong>이메일</strong> help@example.com
+    </p>
+    <p class="disclaimer">
+      본 페이지는 장기렌트 중도해지·전환 관련 상담 연결을 위한 페이지입니다.
+      위약금 감면·승계·전환 가능 여부 및 조건은 고객의 계약 내용, 차량 상태, 렌트사·금융사 정책에 따라 달라지며,
+      모든 고객에게 동일한 결과를 보장하지 않습니다. 실제 진행 조건은 상담을 통해 안내됩니다.
+      © <span id="year"></span> 장기렌트 전환케어. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+<!-- ============================================================
+     하단 고정 CTA (모바일)
+============================================================ -->
+<div class="sticky-cta" id="stickyCta">
+  <a href="#lead-form" class="btn btn--cta" data-scroll>무료 전환 가능성 확인하기</a>
+</div>
+
+<!-- ============================================================
+     CONFIG — 폼 전송 연동 설정
+     · 아래 값을 채우면 해당 방식으로 전송됩니다. 둘 다 비우면 콘솔 로그(mock)로 동작.
+     · 우선순위: 구글시트(SHEET_WEBAPP_URL) → Supabase → mock
+     · 자세한 연동 방법은 같은 폴더의 "연동-가이드.md" 참고.
+============================================================ -->
+<script>
+  window.LEAD_CONFIG = {
+    // 1) 구글시트 연동: Apps Script 웹앱 배포 후 /exec 주소 붙여넣기
+    SHEET_WEBAPP_URL: "",
+    // 2) Supabase 연동: Edge Function(submit-lead) 사용 시
+    SUPABASE_URL: "",
+    SUPABASE_ANON_KEY: "",
+    SUPABASE_FUNCTION: "submit-lead"
+  };
+</script>
+
+<!-- ============================================================
+     SCRIPTS
+============================================================ -->
+<script>
+(function(){
+  "use strict";
+  var $  = function(s,c){return (c||document).querySelector(s);};
+  var $$ = function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s));};
+
+  /* 연도 */
+  var yEl = $("#year"); if(yEl){ yEl.textContent = new Date().getFullYear(); }
+
+  /* ---------- 부드러운 스크롤 (앵커 CTA) ---------- */
+  $$('[data-scroll]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id = a.getAttribute('href');
+      if(id && id.charAt(0)==='#'){
+        var t = $(id);
+        if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); }
+      }
+    });
+  });
+
+  /* ---------- reveal 모션 ---------- */
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var reveals = $$('.reveal');
+  if(reduce || !('IntersectionObserver' in window)){
+    reveals.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, {threshold:0.12, rootMargin:'0px 0px -8% 0px'});
+    reveals.forEach(function(el){ io.observe(el); });
+  }
+
+  /* ---------- 하단 고정 CTA: HERO 지난 뒤 노출 / 폼에선 숨김 ---------- */
+  var sticky = $('#stickyCta');
+  var hero   = $('.hero');
+  var formSec= $('#lead-form');
+  function updateSticky(){
+    if(!sticky) return;
+    var heroBottom = hero ? hero.getBoundingClientRect().bottom : 0;
+    var formRect = formSec ? formSec.getBoundingClientRect() : null;
+    var pastHero = heroBottom < 60;
+    var formVisible = formRect ? (formRect.top < window.innerHeight*0.85 && formRect.bottom > 0) : false;
+    if(pastHero && !formVisible){ sticky.classList.add('show'); }
+    else { sticky.classList.remove('show'); }
+  }
+  window.addEventListener('scroll', updateSticky, {passive:true});
+  window.addEventListener('resize', updateSticky);
+  updateSticky();
+
+  /* ---------- 개인정보 더보기 ---------- */
+  var pMore = $('#privacyMore'), pDetail = $('#privacyDetail');
+  if(pMore && pDetail){
+    pMore.addEventListener('click', function(){
+      var open = !pDetail.hasAttribute('hidden');
+      if(open){ pDetail.setAttribute('hidden',''); pMore.setAttribute('aria-expanded','false'); pMore.textContent='수집 항목 자세히 보기'; }
+      else { pDetail.removeAttribute('hidden'); pMore.setAttribute('aria-expanded','true'); pMore.textContent='접기'; }
+    });
+  }
+
+  /* ---------- 연락처 입력 자동 하이픈 ---------- */
+  var phone = $('#f-phone');
+  if(phone){
+    phone.addEventListener('input', function(){
+      var v = phone.value.replace(/[^0-9]/g,'').slice(0,11);
+      if(v.length<4){ phone.value=v; }
+      else if(v.length<8){ phone.value=v.slice(0,3)+'-'+v.slice(3); }
+      else { phone.value=v.slice(0,3)+'-'+v.slice(3,7)+'-'+v.slice(7); }
+    });
+  }
+
+  /* ---------- UTM / 유입 정보 수집 ---------- */
+  function getTracking(){
+    var p = new URLSearchParams(window.location.search);
+    return {
+      utm_source:   p.get('utm_source')   || '',
+      utm_medium:   p.get('utm_medium')   || '',
+      utm_campaign: p.get('utm_campaign') || '',
+      utm_term:     p.get('utm_term')     || '',
+      utm_content:  p.get('utm_content')  || '',
+      referrer:     document.referrer || '',
+      landing_url:  window.location.href,
+      user_agent:   navigator.userAgent
+    };
+  }
+
+  /* ---------- 폼 전송 ---------- */
+  var form = $('#leadForm');
+  var errBox = $('#formError');
+  var successBox = $('#formSuccess');
+  var submitBtn = $('#submitBtn');
+
+  function collect(){
+    var data = {};
+    $$('input, select', form).forEach(function(el){
+      if(el.type==='checkbox'){ data[el.name]= el.checked; }
+      else if(el.name){ data[el.name]= (el.value||'').trim(); }
+    });
+    var t = getTracking();
+    for(var k in t){ data[k]=t[k]; }
+    data.submitted_at = new Date().toISOString();
+    return data;
+  }
+
+  function validate(){
+    var ok = true;
+    $$('[required]', form).forEach(function(el){
+      var bad = (el.type==='checkbox') ? !el.checked : !(el.value||'').trim();
+      if(bad){ ok=false; el.style.borderColor = el.type==='checkbox' ? '' : 'var(--warn)'; }
+      else { el.style.borderColor=''; }
+    });
+    return ok;
+  }
+
+  /* 전송: 구글시트 → Supabase → mock 순 */
+  function sendLead(data){
+    var cfg = window.LEAD_CONFIG || {};
+    if(cfg.SHEET_WEBAPP_URL){
+      // 구글 Apps Script 웹앱 (CORS 회피 위해 no-cors text/plain)
+      return fetch(cfg.SHEET_WEBAPP_URL, {
+        method:'POST', mode:'no-cors',
+        headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body: JSON.stringify(data)
+      }).then(function(){ return {ok:true, via:'sheet'}; });
+    }
+    if(cfg.SUPABASE_URL && cfg.SUPABASE_ANON_KEY){
+      var url = cfg.SUPABASE_URL.replace(/\/$/,'') + '/functions/v1/' + (cfg.SUPABASE_FUNCTION||'submit-lead');
+      return fetch(url, {
+        method:'POST',
+        headers:{'Content-Type':'application/json','Authorization':'Bearer '+cfg.SUPABASE_ANON_KEY,'apikey':cfg.SUPABASE_ANON_KEY},
+        body: JSON.stringify(data)
+      }).then(function(r){ if(!r.ok) throw new Error('supabase '+r.status); return {ok:true, via:'supabase'}; });
+    }
+    // mock — 연동 전 동작 확인용
+    console.log('[LEAD · mock submit] 연동 설정 전입니다. 아래 데이터가 전송됩니다:', data);
+    return new Promise(function(res){ setTimeout(function(){ res({ok:true, via:'mock'}); }, 600); });
+  }
+
+  if(form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if(errBox) errBox.classList.remove('show');
+      if(!validate()){
+        if(errBox) errBox.classList.add('show');
+        var firstBad = $('[required][style*="warn"]', form) || $('#f-name');
+        if(firstBad) firstBad.scrollIntoView({behavior:'smooth', block:'center'});
+        return;
+      }
+      var data = collect();
+      submitBtn.disabled = true;
+      var prevText = submitBtn.textContent;
+      submitBtn.textContent = '전송 중...';
+
+      sendLead(data).then(function(){
+        // 전환 추적 훅 (광고 픽셀 연결 지점)
+        if(typeof window.onLeadSubmitted==='function'){ try{ window.onLeadSubmitted(data); }catch(_){} }
+        if(window.gtag){ try{ window.gtag('event','generate_lead'); }catch(_){} }
+        if(window.fbq){ try{ window.fbq('track','Lead'); }catch(_){} }
+
+        form.style.display='none';
+        if(successBox){ successBox.classList.add('show'); successBox.scrollIntoView({behavior:'smooth', block:'center'}); }
+        if(sticky) sticky.classList.remove('show');
+      }).catch(function(err){
+        console.error('lead submit error', err);
+        submitBtn.disabled=false;
+        submitBtn.textContent=prevText;
+        if(errBox){ errBox.textContent='전송 중 오류가 발생했습니다. 잠시 후 다시 시도하거나 전화로 문의해 주세요.'; errBox.classList.add('show'); }
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>

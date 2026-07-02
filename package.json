@@ -1,0 +1,13 @@
+{
+  "name": "jangirent-landing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "장기렌트 위약금/신차 변경 DB 수집 랜딩 (정적 HTML)",
+  "scripts": {
+    "dev": "live-server --port=5173 --no-browser --open=/index3.html",
+    "start": "live-server --port=5173 --open=/index3.html"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
