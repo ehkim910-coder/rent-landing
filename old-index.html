@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>장기렌트 중도해지 전환 상담 | 위약금 부담 줄이고 신차로</title>
+<meta name="description" content="장기렌트 해지 위약금 때문에 차량 변경을 망설이고 계신가요? 그냥 해지하기 전, 손해를 줄이는 전환 방법을 무료로 확인하세요." />
+
+<!-- ============================================================
+  진입 셸
+  · 모바일: 실제 랜딩(landing.html)으로 바로 이동 — UTM/앵커 그대로 전달
+  · 데스크톱: 모바일 폭(390px) 폰 프레임 안에 landing.html을 그대로 임베드
+    (CSS 미디어쿼리는 뷰포트 기준이라, PC 폭만 줄이면 데스크톱 스타일이 적용됨 → iframe이 정답)
+============================================================ -->
+<script>
+  (function () {
+    // 모바일/태블릿 세로 폭이면 셸을 거치지 않고 실제 페이지로 이동
+    var isMobile = window.matchMedia('(max-width: 900px)').matches;
+    if (isMobile) {
+      var dest = 'landing.html' + window.location.search + window.location.hash;
+      window.location.replace(dest);
+    }
+  })();
+</script>
+
+<style>
+  html, body { margin: 0; height: 100%; }
+  body {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Segoe UI', Roboto, sans-serif;
+    background:
+      radial-gradient(120% 90% at 85% 0%, rgba(0,194,129,.10), transparent 55%),
+      radial-gradient(100% 80% at 0% 100%, rgba(30,107,255,.10), transparent 55%),
+      linear-gradient(160deg, #0B2138 0%, #071726 100%);
+    color: #EAF1F8;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* 데스크톱 미리보기 레이아웃 */
+  .preview {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    padding: 28px 16px;
+  }
+  .preview-label {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 700; letter-spacing: -0.01em;
+    color: #A9BBCC;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.12);
+    padding: 8px 16px; border-radius: 999px;
+  }
+  .preview-label .dot { width: 8px; height: 8px; border-radius: 50%; background: #00C281; box-shadow: 0 0 0 4px rgba(0,194,129,.18); }
+
+  /* 폰 프레임 */
+  .phone {
+    width: 390px;
+    max-width: 94vw;
+    height: min(844px, 88vh);
+    background: #000;
+    border-radius: 44px;
+    padding: 12px;
+    box-shadow: 0 40px 90px -30px rgba(0,0,0,.8), 0 0 0 2px rgba(255,255,255,.06);
+    position: relative;
+  }
+  .phone::before {            /* 상단 노치 */
+    content: "";
+    position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
+    width: 138px; height: 26px; background: #000; border-radius: 0 0 16px 16px; z-index: 3;
+  }
+  .phone iframe {
+    width: 100%; height: 100%;
+    border: none; border-radius: 32px; background: #fff; display: block;
+  }
+
+  .preview-tip { font-size: 12.5px; color: #6E8196; text-align: center; max-width: 360px; line-height: 1.6; }
+  .preview-tip a { color: #00C281; text-decoration: none; font-weight: 700; }
+
+  /* 셸이 모바일에서 잠깐 보일 때 대비(리다이렉트 전) */
+  @media (max-width: 900px) {
+    .preview { display: none; }
+  }
+</style>
+</head>
+<body>
+  <div class="preview">
+    <span class="preview-label"><span class="dot"></span>모바일 미리보기 · PC에서도 모바일과 동일하게 표시됩니다</span>
+    <div class="phone">
+      <!-- src는 스크립트로 UTM/앵커를 붙여 주입 -->
+      <iframe id="frame" title="장기렌트 전환 상담 랜딩 (모바일 미리보기)" loading="eager"></iframe>
+    </div>
+    <p class="preview-tip">실제 페이지 주소는 <a id="directLink" href="landing.html">landing.html</a> 입니다. 모바일에서는 자동으로 전체화면으로 열립니다.</p>
+  </div>
+
+  <script>
+    (function () {
+      // 데스크톱에서만 실행 (모바일은 위에서 이미 redirect)
+      var qs = window.location.search;
+      var hash = window.location.hash;
+      var src = 'landing.html' + qs + hash;
+      var frame = document.getElementById('frame');
+      if (frame) { frame.src = src; }
+      var link = document.getElementById('directLink');
+      if (link) { link.href = src; }
+    })();
+  </script>
+</body>
+</html>
