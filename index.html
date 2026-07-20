@@ -929,6 +929,74 @@ img.ps-img{ width:100%; height:100%; object-fit:cover; padding:0; -webkit-user-d
     });
   }
 
+  /* ============================================================
+     상담 신청 저장 — 구글시트 연동
+     신청 데이터를 Apps Script 웹앱으로 보내면 시트에 한 줄씩 쌓입니다.
+     주소를 바꾸려면: 시트 → 확장 프로그램 → Apps Script → 배포 관리 →
+     새 버전 배포 후 나오는 /exec 주소를 아래에 붙여넣으세요.
+     (비워두면 저장 없이 콘솔에만 찍히는 목업으로 동작합니다.)
+  ============================================================ */
+  var SHEET_WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbxb33sc0p2UoQd_86FTrD50iQMfhirKaT-RZh8wUV5jDhuGVzakQIe_R9n_Z0MnYblgTA/exec';
+
+  /* ---- 유입정보(UTM) 저장 ----
+     광고로 들어왔다가 나중에 다시 방문해서 신청하는 경우 UTM이 날아가므로,
+     첫 방문 때 브라우저에 30일간 저장해두고 제출 시 꺼내 씁니다. */
+  var UTM_KEYS = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'];
+  var UTM_STORE = 'lead_utm';
+  var UTM_TTL = 30 * 24 * 60 * 60 * 1000;   // 30일
+
+  function captureUtm(){
+    try{
+      var q = new URLSearchParams(location.search);
+      var hit = UTM_KEYS.some(function(k){ return q.get(k); });
+      if(!hit) return;                       // UTM 없는 재방문이면 기존 값 유지
+      var rec = { at: Date.now(), referrer: document.referrer || '', landing_url: location.href };
+      UTM_KEYS.forEach(function(k){ rec[k] = q.get(k) || ''; });
+      localStorage.setItem(UTM_STORE, JSON.stringify(rec));
+    }catch(_){}
+  }
+  captureUtm();
+
+  function readUtm(){
+    var q = new URLSearchParams(location.search);
+    var live = {};
+    UTM_KEYS.forEach(function(k){ live[k] = q.get(k) || ''; });
+    live.referrer = document.referrer || '';
+    live.landing_url = location.href;
+    if(UTM_KEYS.some(function(k){ return live[k]; })) return live;   // 지금 주소에 UTM이 있으면 그게 우선
+    try{
+      var saved = JSON.parse(localStorage.getItem(UTM_STORE) || 'null');
+      if(saved && (Date.now() - saved.at) < UTM_TTL){
+        return Object.assign({}, saved, { landing_url: location.href, revisit: 'Y' });
+      }
+    }catch(_){}
+    return live;
+  }
+
+  function sendLead(data){
+    var utm = readUtm();
+    var payload = Object.assign({}, data, {
+      submitted_at: new Date().toLocaleString('ko-KR', { timeZone:'Asia/Seoul' }),
+      utm_source:   utm.utm_source   || '',
+      utm_medium:   utm.utm_medium   || '',
+      utm_campaign: utm.utm_campaign || '',
+      utm_term:     utm.utm_term     || '',
+      utm_content:  utm.utm_content  || '',
+      referrer:     utm.referrer     || '',
+      landing_url:  utm.landing_url  || location.href,
+      revisit:      utm.revisit      || ''
+    });
+    if(SHEET_WEBAPP_URL){
+      fetch(SHEET_WEBAPP_URL, {
+        method:'POST', mode:'no-cors',
+        headers:{ 'Content-Type':'text/plain;charset=utf-8' },   // preflight 회피
+        body: JSON.stringify(payload)
+      }).catch(function(err){ console.warn('[lead] 전송 실패', err); });
+      return;
+    }
+    console.log('[lead·mock] 저장소 미설정. 데이터:', payload);
+  }
+
   /* ---- 폼 제출 → 성공 모달 ---- */
   var form = document.getElementById('lead-form');
   var errBox = document.getElementById('form-error');
@@ -951,9 +1019,8 @@ img.ps-img{ width:100%; height:100%; object-fit:cover; padding:0; -webkit-user-d
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({ event:'lead_submit' });
 
-    /* === 리드 저장 연동 지점 ===
-       fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}); */
-    console.log('[lead] 상담 신청 데이터:', data);
+    /* === 리드 저장 === */
+    sendLead(data);
 
     overlay.classList.add('open');
     overlay.setAttribute('aria-hidden','false');
