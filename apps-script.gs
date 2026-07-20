@@ -57,7 +57,14 @@ function doPost(e) {
       if (idx === -1) return;
       row[idx] = format(data[col[0]]);
     });
-    sheet.appendRow(row);
+
+    // 셀 서식을 '텍스트'로 지정한 뒤 기록.
+    // 이렇게 안 하면 캠페인명 '0720' → 720, 전화번호 '010-...' 등이
+    // 숫자/날짜로 자동 변환되며 앞자리 0이 잘립니다.
+    var rowNum = sheet.getLastRow() + 1;
+    var range = sheet.getRange(rowNum, 1, 1, row.length);
+    range.setNumberFormat('@');
+    range.setValues([row]);
 
     return json({ ok: true });
   } catch (err) {
