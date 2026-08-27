@@ -1021,6 +1021,9 @@ img.ps-img{ width:100%; height:100%; object-fit:cover; padding:0; -webkit-user-d
   function sendLead(data){
     var utm = readUtm();
     var payload = Object.assign({}, data, {
+      /* 수신 스크립트(Code.gs)가 이 값을 보고 '웹[위약금]' 탭으로 분기합니다.
+         기존 웹DB2·포스팅 흐름과 섞이지 않게 하는 구분자이므로 지우지 마세요. */
+      lead_type:    'penalty',
       submitted_at: new Date().toLocaleString('ko-KR', { timeZone:'Asia/Seoul' }),
       utm_source:   utm.utm_source   || '',
       utm_medium:   utm.utm_medium   || '',
