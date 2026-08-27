@@ -1,10 +1,10 @@
 /****************************************************************
  * 장기렌트 전환 상담 — 구글시트 수신 스크립트 (Apps Script)
  *
- * 저장 위치 : 아래 TARGETS 에 적힌 "두 곳 모두" 에 같은 내용을 기록합니다.
- *   1) 260204페이백 오토플랜  →  [웹[위약금]] 탭
- *   2) 페이백 오토플랜 위약금 랜딩 DB  →  첫 번째 탭 (기존에 쌓이던 곳)
- *   ※ 한 곳이 실패해도 나머지 한 곳에는 반드시 기록되도록 분리 처리합니다.
+ * 저장 위치 : "260204페이백 오토플랜" 스프레드시트 → [웹[위약금]] 탭  (이 한 곳)
+ *   https://docs.google.com/spreadsheets/d/1is7B3NOhof3w7vX8Uj47QzcXn3zV_9Kip5SD5daF924/edit
+ *   ※ 기존 '페이백 오토플랜 위약금 랜딩 DB' 시트에는 더 이상 쌓지 않습니다.
+ *      (7~8월 리드 보관용으로만 남겨둠)
  *
  * [설치 방법]
  * 1. "페이백 오토플랜 위약금 랜딩 DB" 스프레드시트 열기
@@ -34,13 +34,15 @@ var TARGETS = [
     label: '웹[위약금]',
     spreadsheetId: '1is7B3NOhof3w7vX8Uj47QzcXn3zV_9Kip5SD5daF924',
     sheetName: '웹[위약금]'          // 이름으로 탭을 찾습니다. 없으면 새로 만듭니다.
-  },
-  {
-    key: 'legacy',
-    label: '위약금 랜딩 DB',
-    spreadsheetId: '1JPzTBRzx94-UcOJDdQB5Enc5cm0MnV-_Iyt-2xrPB_Y',
-    sheetName: null                  // null = 첫 번째 탭 (기존에 쌓이던 그 탭)
   }
+  // ── 기존 '페이백 오토플랜 위약금 랜딩 DB' 시트는 더 이상 기록하지 않습니다.
+  //    (7~8월 리드 보관용으로만 남겨둠. 다시 쌓고 싶으면 아래 주석을 푸세요.)
+  // ,{
+  //   key: 'legacy',
+  //   label: '위약금 랜딩 DB',
+  //   spreadsheetId: '1JPzTBRzx94-UcOJDdQB5Enc5cm0MnV-_Iyt-2xrPB_Y',
+  //   sheetName: null                // null = 첫 번째 탭
+  // }
 ];
 
 /**
