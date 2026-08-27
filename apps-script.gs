@@ -6,25 +6,29 @@
  *   ※ 기존 '페이백 오토플랜 위약금 랜딩 DB' 시트에는 더 이상 쌓지 않습니다.
  *      (7~8월 리드 보관용으로만 남겨둠)
  *
+ * ※ 이 스크립트는 "독립 프로젝트"로 만듭니다.
+ *   아래 openById 가 260204 시트를 직접 열기 때문에, 코드가 어느 스프레드시트에
+ *   붙어 있든(혹은 아무데도 안 붙어 있든) 상관없이 웹[위약금] 탭에 기록됩니다.
+ *   260204 시트가 "링크 있는 모든 사용자 = 편집자" 라서 어느 구글 계정으로 만들어도 됩니다.
+ *
  * [설치 방법]
- * 1. "페이백 오토플랜 위약금 랜딩 DB" 스프레드시트 열기
- *      https://docs.google.com/spreadsheets/d/1JPzTBRzx94-UcOJDdQB5Enc5cm0MnV-_Iyt-2xrPB_Y/edit
- * 2. 상단 메뉴 [확장 프로그램] → [Apps Script]
- *    (기존 코드에 'OK - lead endpoint is live' 문구가 있으면 맞는 프로젝트입니다)
- * 3. 기존 코드 전체 삭제 후 이 파일 내용을 통째로 붙여넣기 → 저장
- * 4. 우측 상단 [배포] → [배포 관리] → 연필(수정) → 버전 "새 버전" → [배포]
+ * 1. https://script.google.com/home/projects/create  접속 (새 프로젝트 생성)
+ * 2. 기본 코드(function myFunction...) 전체 삭제 후 이 파일 내용을 통째로 붙여넣기 → 저장
+ * 3. 우측 상단 [배포] → [새 배포] → 톱니바퀴 ⚙ → 유형 "웹 앱"
+ *      - 설명: 아무거나 (예: v1)
  *      - 다음 사용자로 실행: 나
  *      - 액세스 권한이 있는 사용자: "모든 사용자"   ← ★이거 꼭★
- *    → 권한 승인 화면이 다시 뜨면 승인(안전하지 않음 → 계속)
- *      ※ openById 로 다른 스프레드시트까지 열게 되어 재승인이 한 번 필요합니다.
- *    → 웹앱 주소(/exec)는 그대로 유지됩니다. 랜딩페이지는 손댈 필요 없습니다.
+ *    → [배포] → 권한 승인(안전하지 않음 → 계속)
+ * 4. 나오는 https://script.google.com/macros/s/.../exec 주소를 복사해서
+ *    index.html 의  var SHEET_WEBAPP_URL = '...'  에 붙여넣기 → Vercel 재배포
  *
- * ⚠️ 절대 'CustomerAlimtalk' 프로젝트에는 붙여넣지 마세요.
- *    그건 웹DB2 랜딩·포스팅 CRM 을 담당하는 다른 프로젝트입니다.
+ * ⚠️ 260204 시트의 [확장 프로그램 → Apps Script] 에는 절대 붙여넣지 마세요.
+ *    거기엔 'CustomerAlimtalk'(웹DB2 랜딩·포스팅 CRM 담당)이 이미 있고,
+ *    doPost 가 충돌해서 기존 유입이 전부 멈춥니다.
  *
  * [확인 방법]
- * - 브라우저로 /exec 주소를 열면 두 곳 각각에 몇 줄 쌓였는지 JSON 으로 보여줍니다.
- * - 에디터에서 함수 testWrite 를 실행하면 두 곳에 테스트 행이 1줄씩 들어갑니다.
+ * - 브라우저로 /exec 주소를 열면 어느 탭에 몇 줄 쌓였는지 JSON 으로 보여줍니다.
+ * - 에디터에서 함수 testWrite 를 실행하면 테스트 행이 1줄 들어갑니다.
  ****************************************************************/
 
 /** 기록 대상 — 위에서부터 순서대로 모두 기록합니다. */
@@ -95,7 +99,7 @@ function doPost(e) {
     var data = JSON.parse(e.postData.contents);
     var results = writeAll(data);
 
-    // 한 곳이라도 성공했으면 ok. 두 곳 다 실패해야 ok:false.
+    // 한 곳이라도 성공했으면 ok.
     var okCount = 0;
     for (var i = 0; i < results.length; i++) if (results[i].ok) okCount++;
     return json({ ok: okCount > 0, saved: okCount, total: results.length, results: results });
@@ -185,7 +189,7 @@ function format(v) {
 
 /**
  * 브라우저로 /exec 주소를 열었을 때 배포 확인용.
- * 두 저장 위치가 각각 정상인지, 몇 줄 쌓였는지 보여줍니다.
+ * 대상 탭이 정상인지, 몇 줄 쌓였는지 보여줍니다.
  * (리드 내용은 노출하지 않고 개수만 알려줍니다.)
  */
 function doGet() {
@@ -211,7 +215,7 @@ function doGet() {
 
 /**
  * 에디터에서 직접 실행하는 테스트용 함수.
- * 실행하면 두 저장 위치에 '테스트' 라고 표시된 행이 1줄씩 들어갑니다. 확인 후 지우세요.
+ * 실행하면 웹[위약금] 탭에 '테스트' 라고 표시된 행이 1줄 들어갑니다. 확인 후 지우세요.
  */
 function testWrite() {
   var results = writeAll({
