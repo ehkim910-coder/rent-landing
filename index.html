@@ -596,6 +596,60 @@ img.ps-img{ width:100%; height:100%; object-fit:cover; padding:0; -webkit-user-d
 
 <main id="top">
 
+<!-- ============ 0-A. 상단 FORM (하단 폼과 동일 · 동일 시트로 전송) ============ -->
+<section class="final" id="form-top">
+  <div class="wrap">
+    <div class="form-box">
+      <div class="form-head">
+        <h2>내 장기렌트·리스 계약,<br>가능한 방법 확인하기</h2>
+        <p>현재 이용 중인 차량과 계약 상황을 남겨주시면<br>위약금 부담을 줄이고 신차로 변경할 수 있는지 확인해드립니다.</p>
+      </div>
+
+      <form class="lead-form" id="lead-form-top" novalidate>
+        <div class="form-row">
+          <div class="form-group"><label for="f-name-t">이름<span class="req">*</span></label><input type="text" id="f-name-t" name="name" autocomplete="name" placeholder="성함" required /></div>
+          <div class="form-group"><label for="f-phone-t">연락처<span class="req">*</span></label><input type="tel" id="f-phone-t" name="phone" autocomplete="tel" inputmode="numeric" placeholder="010-0000-0000" required /></div>
+        </div>
+
+        <div class="form-group"><label for="f-car-t">현재 이용 중인 차량명<span class="req">*</span></label><input type="text" id="f-car-t" name="current_car" placeholder="예) 그랜저, 카니발, BMW 5시리즈" required /></div>
+
+        <div class="form-group">
+          <label for="f-period-t">이용기간<span class="req">*</span></label>
+          <select id="f-period-t" name="use_period" required>
+            <option value="" disabled selected>선택</option><option>6개월 미만</option><option>6개월~1년</option><option>1년~2년</option><option>2년 이상</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>신차 변경 희망 여부<span class="req">*</span></label>
+          <div class="seg" role="radiogroup" aria-label="신차 변경 희망 여부">
+            <label><input type="radio" name="want_new" value="희망" required /><span>희망함</span></label>
+            <label><input type="radio" name="want_new" value="미정" /><span>미정</span></label>
+          </div>
+        </div>
+
+        <div class="form-group"><label for="f-msg-t">문의 내용</label><textarea id="f-msg-t" name="message" placeholder="궁금하신 점이나 현재 상황을 자유롭게 남겨주세요."></textarea></div>
+
+        <div class="consent">
+          <label><input type="checkbox" id="f-agree-t" name="agree" required /><span>[필수] 개인정보 수집 및 이용에 동의합니다.</span></label>
+          <details class="detail">
+            <summary>수집·이용 내용 보기</summary>
+            <p>· 수집 항목: 이름, 연락처, 차량·계약 정보 및 상담 내용<br>· 수집 목적: 장기렌트 계약 진단 및 상담 연락<br>· 보유 기간: 상담 완료 후 관련 법령에 따라 보관 후 파기<br>· 동의를 거부하실 수 있으나, 거부 시 상담 신청이 제한됩니다.</p>
+          </details>
+        </div>
+
+        <div class="form-error">필수 항목을 모두 입력하고 개인정보 수집에 동의해주세요.</div>
+
+        <button type="submit" class="form-submit">
+          내 차량도 가능한지 확인하기
+          <svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+        <p class="form-foot-note">제출 후 담당자가 입력하신 연락처로 확인 연락을 드립니다.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
 <!-- ============ 0. 풀스크린 영상 배너 ============ -->
 <section class="vhero">
   <video class="vhero-video hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture>
@@ -603,10 +657,10 @@ img.ps-img{ width:100%; height:100%; object-fit:cover; padding:0; -webkit-user-d
   </video>
   <div class="vhero-overlay"></div>
   <div class="vhero-content">
-    <h1 class="vhero-title">기존 렌트·리스 차량,<br><span class="pt">위약금</span> 때문에<br>못 바꾸고 계신가요?</h1>
-    <p class="vhero-sub">계약이 남아 있어도<br>기존 차량을 정리하고<br>신차로 변경할 수 있는 방법이 있습니다.</p>
+    <h1 class="vhero-title">기존 렌트·리스 차량,<br><span class="pt">처분</span>해드립니다.</h1>
+    <p class="vhero-sub">위약금 다 내지 마세요!<br>아끼는 방법이 있습니다.</p>
     <button class="cta js-to-form" type="button">
-      내 차량도 가능한지 확인하기
+      위약금없이 처분하기
       <svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </button>
   </div>
@@ -615,9 +669,7 @@ img.ps-img{ width:100%; height:100%; object-fit:cover; padding:0; -webkit-user-d
 
 <!-- ============ 1. HERO (이미지 박스) ============ -->
 <section class="hero wrap surface" id="intro">
-  <span class="hero-tag">⚠ 해지하기 전, 잠깐만요</span>
   <h1>장기렌트·신차리스,<br><span class="red hl-blue">비용 부담 없이</span><br>정리하고 싶으신가요?</h1>
-  <p class="hero-sub">지금 계약 기준으로, <strong>비용 부담을 줄일 방법이 있는지</strong><br>기존 차량 정리부터 신차 변경까지 먼저 확인해드립니다.</p>
   <img class="hero-img" src="image/hero/hero.png" alt="장기렌트 해지를 고민하는 고객" draggable="false" />
   <ul class="hero-chips">
     <li>현재 계약 진단</li>
@@ -721,7 +773,7 @@ img.ps-img{ width:100%; height:100%; object-fit:cover; padding:0; -webkit-user-d
         <p>현재 이용 중인 차량과 계약 상황을 남겨주시면<br>위약금 부담을 줄이고 신차로 변경할 수 있는지 확인해드립니다.</p>
       </div>
 
-      <form id="lead-form" novalidate>
+      <form class="lead-form" id="lead-form" novalidate>
         <div class="form-row">
           <div class="form-group"><label for="f-name">이름<span class="req">*</span></label><input type="text" id="f-name" name="name" autocomplete="name" placeholder="성함" required /></div>
           <div class="form-group"><label for="f-phone">연락처<span class="req">*</span></label><input type="tel" id="f-phone" name="phone" autocomplete="tel" inputmode="numeric" placeholder="010-0000-0000" required /></div>
@@ -730,9 +782,9 @@ img.ps-img{ width:100%; height:100%; object-fit:cover; padding:0; -webkit-user-d
         <div class="form-group"><label for="f-car">현재 이용 중인 차량명<span class="req">*</span></label><input type="text" id="f-car" name="current_car" placeholder="예) 그랜저, 카니발, BMW 5시리즈" required /></div>
 
         <div class="form-group">
-          <label for="f-fee">현재 월 납입료<span class="req">*</span></label>
-          <select id="f-fee" name="monthly_fee" required>
-            <option value="" disabled selected>선택</option><option>50만원 미만</option><option>50만~80만원</option><option>80만~120만원</option><option>120만원 이상</option>
+          <label for="f-period">이용기간<span class="req">*</span></label>
+          <select id="f-period" name="use_period" required>
+            <option value="" disabled selected>선택</option><option>6개월 미만</option><option>6개월~1년</option><option>1년~2년</option><option>2년 이상</option>
           </select>
         </div>
 
@@ -763,17 +815,6 @@ img.ps-img{ width:100%; height:100%; object-fit:cover; padding:0; -webkit-user-d
         <p class="form-foot-note">제출 후 담당자가 입력하신 연락처로 확인 연락을 드립니다.</p>
       </form>
     </div>
-  </div>
-</section>
-
-<!-- ============ PLEDGE (다크 마무리) ============ -->
-<section class="pledge">
-  <div class="wrap reveal">
-    <ul class="pledge-lines">
-      <li><span class="point">무리한 권유</span>는 없습니다.</li>
-      <li><span class="point">가장 유리한 방법</span>만 안내합니다.</li>
-    </ul>
-    <p class="pledge-sub">모든 고객이 위약금 없이 변경 가능한 것은 아니며,<br>가능 여부는 현재 계약 조건에 따라 달라질 수 있습니다.</p>
   </div>
 </section>
 
@@ -865,17 +906,22 @@ img.ps-img{ width:100%; height:100%; object-fit:cover; padding:0; -webkit-user-d
 
   /* ---- 폼(개인정보 입력)이 나오면 하단 고정바 숨김, 그 외엔 항상 표시 ---- */
   var bottomNav = document.querySelector('.bottom-nav');
-  var formSec = document.getElementById('form');
-  if(bottomNav && formSec){
+  var formSecs = document.querySelectorAll('section.final');
+  function anyFormVisible(){
+    return Array.prototype.some.call(formSecs, function(s){
+      var r = s.getBoundingClientRect();
+      return r.top < window.innerHeight && r.bottom > 0;
+    });
+  }
+  if(bottomNav && formSecs.length){
     if('IntersectionObserver' in window){
-      var navIo = new IntersectionObserver(function(entries){
-        entries.forEach(function(en){ bottomNav.classList.toggle('hide', en.isIntersecting); });
+      var navIo = new IntersectionObserver(function(){
+        bottomNav.classList.toggle('hide', anyFormVisible());
       }, { threshold:0, rootMargin:'0px 0px -5% 0px' });
-      navIo.observe(formSec);
+      formSecs.forEach(function(s){ navIo.observe(s); });
     } else {
       window.addEventListener('scroll', function(){
-        var r = formSec.getBoundingClientRect();
-        bottomNav.classList.toggle('hide', r.top < window.innerHeight && r.bottom > 0);
+        bottomNav.classList.toggle('hide', anyFormVisible());
       }, { passive:true });
     }
   }
@@ -919,15 +965,14 @@ img.ps-img{ width:100%; height:100%; object-fit:cover; padding:0; -webkit-user-d
   });
 
   /* ---- 연락처 자동 하이픈 ---- */
-  var phone = document.getElementById('f-phone');
-  if(phone){
+  document.querySelectorAll('.lead-form input[name="phone"]').forEach(function(phone){
     phone.addEventListener('input', function(){
       var v = this.value.replace(/\D/g,'').slice(0,11);
       if(v.length<4){ this.value=v; }
       else if(v.length<8){ this.value=v.slice(0,3)+'-'+v.slice(3); }
       else{ this.value=v.slice(0,3)+'-'+v.slice(3,7)+'-'+v.slice(7); }
     });
-  }
+  });
 
   /* ============================================================
      상담 신청 저장 — 구글시트 연동
@@ -997,34 +1042,37 @@ img.ps-img{ width:100%; height:100%; object-fit:cover; padding:0; -webkit-user-d
     console.log('[lead·mock] 저장소 미설정. 데이터:', payload);
   }
 
-  /* ---- 폼 제출 → 성공 모달 ---- */
-  var form = document.getElementById('lead-form');
-  var errBox = document.getElementById('form-error');
+  /* ---- 폼 제출 → 성공 모달 (상단·하단 폼 공통) ---- */
   var overlay = document.getElementById('success-overlay');
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    var ok = form.checkValidity();
-    var agree = document.getElementById('f-agree').checked;
-    if(!ok || !agree){
-      errBox.classList.add('show');
-      var firstInvalid = form.querySelector(':invalid');
-      if(firstInvalid){ firstInvalid.focus(); } else if(!agree){ document.getElementById('f-agree').focus(); }
-      return;
-    }
-    errBox.classList.remove('show');
-    var data = Object.fromEntries(new FormData(form).entries());
+  document.querySelectorAll('.lead-form').forEach(function(form){
+    var errBox = form.querySelector('.form-error');
+    var agreeBox = form.querySelector('input[name="agree"]');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var ok = form.checkValidity();
+      var agree = agreeBox.checked;
+      if(!ok || !agree){
+        errBox.classList.add('show');
+        var firstInvalid = form.querySelector(':invalid');
+        if(firstInvalid){ firstInvalid.focus(); } else if(!agree){ agreeBox.focus(); }
+        return;
+      }
+      errBox.classList.remove('show');
+      var data = Object.fromEntries(new FormData(form).entries());
+      data.form_position = (form.id === 'lead-form-top') ? '상단' : '하단';
 
-    /* === 전환 추적 (Meta Pixel / GTM 연동 지점) === */
-    if(window.fbq){ try{ fbq('track','Lead'); }catch(_){} }
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event:'lead_submit' });
+      /* === 전환 추적 (Meta Pixel / GTM 연동 지점) === */
+      if(window.fbq){ try{ fbq('track','Lead'); }catch(_){} }
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event:'lead_submit' });
 
-    /* === 리드 저장 === */
-    sendLead(data);
+      /* === 리드 저장 === */
+      sendLead(data);
 
-    overlay.classList.add('open');
-    overlay.setAttribute('aria-hidden','false');
-    form.reset();
+      overlay.classList.add('open');
+      overlay.setAttribute('aria-hidden','false');
+      form.reset();
+    });
   });
   document.getElementById('success-close').addEventListener('click', function(){
     overlay.classList.remove('open'); overlay.setAttribute('aria-hidden','true');

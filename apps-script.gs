@@ -28,10 +28,11 @@ var COLUMNS = [
   ['name',         '이름'],
   ['phone',        '연락처'],
   ['current_car',  '차량명'],
-  ['monthly_fee',  '월납입료'],
+  ['use_period',   '이용기간'],
   ['want_new',     '신차변경희망'],
   ['message',      '문의내용'],
   ['agree',        '개인정보동의'],
+  ['form_position','폼위치'],        // 상단 폼 / 하단 폼 어디서 제출했는지
   ['utm_source',   'utm_source'],     // 유입 매체 (naver, google, meta …)
   ['utm_medium',   'utm_medium'],     // 유입 방식 (blog, cpc, post …)
   ['utm_campaign', 'utm_campaign'],   // 캠페인명
